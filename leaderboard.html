@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>লিডারবোর্ড</title>
+
+    <!-- Linking Bengali Font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali&display=swap" rel="stylesheet">
+
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Background Color Animation */
+        body {
+            font-family: 'Noto Serif Bengali', serif;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh;
+            animation: backgroundChange 10s infinite alternate; /* Adjusted timing for faster transition */
+        }
+
+        @keyframes backgroundChange {
+            0% { background-color: #ff0000; } /* Red */
+            25% { background-color: #00ff00; } /* Green */
+            50% { background-color: #0000ff; } /* Blue */
+            75% { background-color: #ffff00; } /* Yellow */
+            100% { background-color: #ff0000; } /* Back to Red */
+        }
+
+        /* Header Styling */
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header img {
+            width: 150px;
+            height: auto;
+        }
+
+        /* Container Styling */
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Leaderboard Table Styling */
+        .leaderboard {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .leaderboard th, .leaderboard td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+            font-weight: bold; /* Bold text in the leaderboard */
+        }
+
+        .leaderboard th {
+            background-color: #f4f4f4;
+        }
+
+        .leaderboard tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Bottom Menu Styling */
+        .bottom-menu {
+            display: flex;
+            justify-content: space-between; /* Maintain space between buttons */
+            align-items: center;
+            background-color: #fff;
+            padding: 10px 20px; /* Adjust padding for the overall menu */
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .bottom-menu a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin: 0 10px; /* Adjusted margin for buttons */
+            transition: color 0.2s ease;
+        }
+
+        .bottom-menu a:hover {
+            color: #4CAF50;
+        }
+
+        .bottom-menu img {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 5px; /* Increased margin below icons */
+        }
+
+        /* Highlight Recharge Button */
+        .bottom-menu .recharge-button {
+            color: #fff;
+            background-color: #FF5733;
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: background-color 0.2s ease;
+        }
+
+        .bottom-menu .recharge-button:hover {
+            background-color: #e74c3c;
+        }
+
+        .bottom-menu .recharge-button img {
+            filter: brightness(0) invert(1); /* makes the icon white */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section with Centered Logo -->
+    <header class="header">
+        <img src="https://i.postimg.cc/Gmwwsw3v/rupashot-full-text.png" alt="Logo">
+    </header>
+
+    <!-- Main Content Container -->
+    <div class="container">
+        <h1>লিডারবোর্ড</h1>
+        
+        <!-- Leaderboard Table -->
+        <table class="leaderboard">
+            <thead>
+                <tr>
+                    <th>র‌্যাঙ্ক</th>
+                    <th>ইউজারনেম</th>
+                    <th>রেভিনিউ (BDT)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>জন ডো</td>
+                    <td>৳ 1500</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>মোহাম্মদ আলী</td>
+                    <td>৳ 1200</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>সুজিত রায়</td>
+                    <td>৳ 900</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>সীমা আক্তার</td>
+                    <td>৳ 750</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>আলিম হোসেন</td>
+                    <td>৳ 600</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>নিশাত মঞ্জুর</td>
+                    <td>৳ 500</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>রেজাউল করিম</td>
+                    <td>৳ 450</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>শাহিনা আক্তার</td>
+                    <td>৳ 300</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>সেলিনা পারভীন</td>
+                    <td>৳ 250</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>বিলাল হোসেন</td>
+                    <td>৳ 200</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bottom Menu -->
+    <div class="bottom-menu">
+        <a href="https://example.com/leaderboard">
+            <img src="https://i.postimg.cc/j5gCsdbH/leaderboard.png" alt="Leaderboard Icon">
+            লিডারবোর্ড
+        </a>
+        <a href="https://example.com/earn" class="recharge-button">
+            <img src="https://i.postimg.cc/yxDxW41w/earn.png" alt="Recharge Icon">
+            রিচার্জ
+        </a>
+        <a href="https://example.com/comments">
+            <img src="https://i.postimg.cc/ZnXRd700/comments.png" alt="Comments Icon">
+            মন্তব্য
+        </a>
+    </div>
+
+</body>
+</html>

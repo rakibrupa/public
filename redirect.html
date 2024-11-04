@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Countdown Redirect</title>
+		<style>
+			/* Basic reset */
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				font-family: Arial, sans-serif;
+			}
+
+			/* Center the content */
+			body,
+			html {
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background: linear-gradient(135deg, #4a90e2, #9013fe);
+				color: #fff;
+				overflow: hidden;
+			}
+
+			.container {
+				text-align: center;
+				padding: 30px;
+				border-radius: 10px;
+				background: rgba(0, 0, 0, 0.6);
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+			}
+
+			.container h1 {
+				font-size: 2.5em;
+				margin-bottom: 20px;
+			}
+
+			.countdown {
+				font-size: 3em;
+				font-weight: bold;
+				margin: 20px 0;
+			}
+
+			.message {
+				font-size: 1.2em;
+				color: #ddd;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="container">
+			<h1>Redirecting Soon</h1>
+			<div class="countdown" id="countdown">5</div>
+			<p class="message">You will be redirected to Google in a few seconds...</p>
+		</div>
+
+		<script>
+			let countdown = 5; // Countdown start time in seconds
+			const countdownElement = document.getElementById('countdown');
+
+			const countdownInterval = setInterval(() => {
+				countdown--;
+				countdownElement.textContent = countdown;
+				if (countdown <= 0) {
+					clearInterval(countdownInterval);
+					window.location.href = 'https://www.google.com'; // Redirect to Google
+				}
+			}, 1000);
+		</script>
+
+	</body>
+
+</html>

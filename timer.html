@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Professional Once-per-Minute Visit Page</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+				margin: 0;
+				background-color: #f4f4f9;
+				color: #333;
+			}
+
+			.container {
+				text-align: center;
+				padding: 2em;
+				border-radius: 8px;
+				background-color: #ffffff;
+				box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+				width: 90%;
+				max-width: 400px;
+			}
+
+			h1 {
+				color: #007BFF;
+				font-size: 1.8em;
+			}
+
+			p {
+				font-size: 1em;
+				margin: 1em 0;
+				color: #555;
+			}
+
+			.button {
+				display: inline-block;
+				padding: 0.75em 1.5em;
+				font-size: 1em;
+				color: #ffffff;
+				background-color: #007BFF;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+				text-decoration: none;
+				transition: background-color 0.3s;
+			}
+
+			.button:disabled {
+				background-color: #cccccc;
+				cursor: not-allowed;
+			}
+
+			.countdown {
+				color: #FF6347;
+				font-size: 1.2em;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="container" id="container">
+			<div class="content" id="content">
+				<h1>Welcome Back!</h1>
+				<p>You can view this content once every minute.</p>
+				<button class="button" id="visitButton">Go to Special Link</button>
+			</div>
+			<div class="countdown" id="countdown" style="display: none;">
+				<h1>Access Restricted</h1>
+				<p>Please come back in:</p>
+				<span id="timer">1m 0s</span>
+			</div>
+		</div>
+
+		<script>
+			const visitButton = document.getElementById("visitButton");
+			const lastVisit = localStorage.getItem("lastVisitTime");
+			const contentDiv = document.getElementById("content");
+			const countdownDiv = document.getElementById("countdown");
+
+			// Function to format time as mm:ss
+			function formatTime(minutes, seconds) {
+				return `${minutes}m ${seconds}s`;
+			}
+
+			// Function to start the countdown timer
+			function startCountdown(endTime) {
+				const timer = document.getElementById('timer');
+
+				const interval = setInterval(() => {
+					const now = new Date().getTime();
+					const timeLeft = endTime - now;
+
+					if (timeLeft <= 0) {
+						clearInterval(interval);
+						localStorage.removeItem("lastVisitTime");
+						location.reload(); // Reload the page after countdown ends
+					} else {
+						const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+						const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+						timer.innerText = formatTime(minutes, seconds);
+					}
+				}, 1000);
+			}
+
+			// Logic to handle last visit check and button link
+			if (lastVisit) {
+				const lastVisitTime = new Date(parseInt(lastVisit));
+				const nextVisitTime = new Date(lastVisitTime.getTime() + 60 * 1000); // 1 minute
+
+				if (new Date().getTime() < nextVisitTime.getTime()) {
+					contentDiv.style.display = "none";
+					countdownDiv.style.display = "block";
+					visitButton.disabled = true; // Disable the button during cooldown
+					startCountdown(nextVisitTime.getTime());
+				} else {
+					localStorage.setItem("lastVisitTime", new Date().getTime());
+				}
+			} else {
+				localStorage.setItem("lastVisitTime", new Date().getTime());
+			}
+
+			// Set up the button to go to a specified link when clicked
+			visitButton.onclick = () => {
+				window.location.href = "https://www.example.com"; // Replace with your desired link
+			};
+		</script>
+
+	</body>
+
+</html>
