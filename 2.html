@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earning Notification</title>
+    <style>
+        /* Set up full-screen, color-changing background */
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            background: linear-gradient(90deg, red, yellow, green, cyan, blue, magenta, red);
+            background-size: 200% 200%;
+            animation: colorShift 5s infinite;
+        }
+
+        /* Text style */
+        .earning-text {
+            color: white;
+            font-size: 2em;
+            font-weight: bold;
+            text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        /* Countdown style */
+        .countdown {
+            font-size: 1.2em;
+            margin-top: 10px;
+            color: #ffeb3b;
+        }
+
+        /* Animation for color-shifting background */
+        @keyframes colorShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="earning-text">
+        আপনি ৳৬ আয় করেছেন
+        <div class="countdown" id="countdown">5 seconds remaining</div>
+    </div>
+
+    <script>
+        // Set countdown time
+        let timeLeft = 5;
+        const countdownElement = document.getElementById("countdown");
+
+        // Update countdown every second
+        const countdownTimer = setInterval(function() {
+            timeLeft--;
+            countdownElement.textContent = timeLeft + " seconds remaining";
+            
+            if (timeLeft <= 0) {
+                clearInterval(countdownTimer);
+                window.location.href = "https://earnlinks.in/RUPA2";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
