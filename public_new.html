@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RupaShot App</title>
+
+    <!-- Linking Bengali Font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali&display=swap" rel="stylesheet">
+
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Background Color Animation */
+        body {
+            font-family: 'Noto Serif Bengali', serif;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            min-height: 100vh;
+            animation: backgroundChange 10s infinite alternate;
+        }
+
+        @keyframes backgroundChange {
+            0% { background-color: #ff0000; }
+            25% { background-color: #00ff00; }
+            50% { background-color: #0000ff; }
+            75% { background-color: #ffff00; }
+            100% { background-color: #ff0000; }
+        }
+
+        /* Header Styling */
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header img {
+            width: 150px;
+            height: auto;
+        }
+
+        /* Container Styling */
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* App Details Section */
+        .app-details {
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .app-details img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        .app-details h2 {
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .app-details p {
+            margin: 5px 0;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        /* Promotional Video Styling */
+        .video-container {
+            margin-bottom: 30px;
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        /* Modal for Video Playback */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .video-modal video {
+            width: 80%;
+            max-width: 800px;
+            border-radius: 10px;
+        }
+
+        .video-modal .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* Bottom Menu Styling */
+        .bottom-menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 10px 20px;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1000;
+        }
+
+        .bottom-menu a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin: 0 10px;
+            transition: color 0.2s ease;
+        }
+
+        .bottom-menu a:hover {
+            color: #4CAF50;
+        }
+
+        .bottom-menu img {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 5px;
+        }
+
+        .bottom-menu .download-button {
+            color: #fff;
+            background-color: #FF5733;
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: background-color 0.2s ease;
+        }
+
+        .bottom-menu .download-button:hover {
+            background-color: #e74c3c;
+        }
+
+        .bottom-menu .download-button img {
+            filter: brightness(0) invert(1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section with Centered Logo -->
+    <header class="header">
+        <img src="https://i.postimg.cc/Gmwwsw3v/rupashot-full-text.png" alt="Logo">
+    </header>
+
+    <!-- Main Content Container -->
+    <div class="container">
+        
+        <!-- App Details Section -->
+        <div class="app-details">
+            <img src="https://i.postimg.cc/9fC6Jd7M/rupashot-logo.png" alt="RupaShot Logo">
+            <h2>RupaShot</h2>
+            <p>অ্যাপ সাইজ: 6 MB</p>
+            <p>ডাউনলোড সংখ্যা: 50K+</p>
+            <p>অ্যাপ ডেভেলপার: RupaMinhaz</p>
+        </div>
+
+        <!-- Promotional Video Section -->
+        <div class="video-container">
+            <img class="video-thumbnail" src="https://rakibrupa.github.io/public/thumbnail.jpg" alt="Promotional Video" onclick="openVideoModal()">
+        </div>
+
+        <!-- Video Modal -->
+        <div id="videoModal" class="video-modal">
+            <button class="close-btn" onclick="closeVideoModal()">&#10006;</button>
+            <video controls autoplay>
+                <source src="https://dev-rupash.pantheonsite.io/wp-content/uploads/2024/11/Untitled-Video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+    </div>
+
+    <!-- Bottom Menu -->
+    <div class="bottom-menu">
+        <a href="https://rakibrupa.github.io/public/rank.html">
+            <img src="https://i.postimg.cc/j5gCsdbH/leaderboard.png" alt="Leaderboard Icon">
+            লিডারবোর্ড
+        </a>
+        <a href="https://rakibrupa.github.io/public/RupaShot.apk" class="download-button">
+            <img src="https://i.postimg.cc/QCgfwP5W/download.png" alt="Download Icon">
+            ডাউনলোড
+        </a>
+        <a href="https://rakibrupa.github.io/public/rev.html">
+            <img src="https://i.postimg.cc/ZnXRd700/comments.png" alt="Comments Icon">
+            মন্তব্য
+        </a>
+    </div>
+
+    <!-- JavaScript for Modal Functionality -->
+    <script>
+        function openVideoModal() {
+            document.getElementById('videoModal').style.display = 'flex';
+        }
+
+        function closeVideoModal() {
+            document.getElementById('videoModal').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
